@@ -1,3 +1,5 @@
+!![alt text](./img/PHP弱类型3.png)
+
 # 1、strlen():获取字符串长度
 ## strlen("100"); //返回3
 
