@@ -1,4 +1,4 @@
-![alt text](./img/PHP中的科学技术法.png)
+![alt text](./img/PHP中的科学计数法.png)
 
 # 1、is_nmeric($a):$a必须是数字或数字格式的字符串(如:"123"、"1.23"、"1e3"),允许前导空格
 
