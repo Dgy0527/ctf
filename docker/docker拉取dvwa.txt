@@ -1,0 +1,25 @@
+解决网络问题（换用目前可用度极高的 1Panel 镜像源）
+目前最直接有效的办法是换用最新可用的加速器。请复制并执行以下命令（当前是 root，不需要加 sudo）：
+
+bash
+# 1. 写入 1Panel 提供的目前最稳的镜像加速器
+sh -c 'echo "{\"registry-mirrors\": [\"https://docker.1panel.live\"]}" > /etc/docker/daemon.json'
+
+# 2. 重启 Docker 服务
+systemctl daemon-reload
+systemctl restart docker
+
+
+第三步：再次尝试拉取 DVWA
+重启 Docker 后，再次尝试拉取 vulnerables/web-dvwa（这是最推荐的版本，比 digininja/dvwa 更新）：
+
+bash
+docker pull vulnerables/web-dvwa
+
+
+
+
+启动dvwa：docker run -dit --name=dvwa -p 10000:80 vulnerables/web-dvwa
+
+在浏览器打开：127.0.0.1:10000
+
