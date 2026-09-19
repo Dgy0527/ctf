@@ -82,6 +82,7 @@ if( isset( $_GET[ 'Login' ] ) ) {
 ```
 
 1、`$pass=md5[$pass];`:这里MD5没有加盐,容易受到彩虹表攻击
+
    `彩虹表攻击`:一种针对哈希密码的预计算破解技术,用提前算好的巨大哈希对照表,快速反推明文密码,不用在线暴力逐个哈希计算;缺点:对加盐哈希 (salt)基本失效
 
 2、`$query  = "SELECT * FROM `users` WHERE user = '$user' AND password = '$pass';";`:`$user`未转义直接拼接到SQL中,攻击者可以在用户名中输入`' OR '1'='1 --`等payload,改变查询逻辑,从而绕过密码验证;由于`$pass`被MD5成固定格式,注入点主要在`$user`
