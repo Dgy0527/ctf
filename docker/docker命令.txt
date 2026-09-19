@@ -1,6 +1,7 @@
 sudo su/su root
 apt update
 apt install docker.io
+docker version
 docker images
 docker ps -a
 sudo systemctl start docker
@@ -10,12 +11,26 @@ systemctl stop docker.service
 systemctl restart docker
 docker pull 镜像名
 docker pull alpine
-mousepad /etc/passwd/daemon.json (     {
+docker pull docker.1ms.run/guillomovitch/dvwa(用这个镜像)
+1、mousepad(nano) /etc/passwd/daemon.json (     {
 				      "registry-mirrors":["https://
 				      这里替换.mirror.aliyuncs.com"]
-			          	 }                              ）
+			          	 } 
+2、sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": [
+    "https://docker.1ms.run",
+    "https://docker.xuanyuan.me",
+    "https://toc3mv4d.mirror.aliyuncs.com"
+  ]
+}
+docker info                             ）
 docker run -dit --name=dvwa -p 10000:80 镜像名
-docker stop 镜像
-docker start 镜像
-docker exec -it 镜像 bash
+docker stop 镜像名
+docker start 镜像名
+docker exec -it 镜像名 bash
 apt install
+docker rmi 镜像名
+docker system df
+docker rm -f dvwa
+dvwa账户:admin;密码:password
