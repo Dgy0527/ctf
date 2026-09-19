@@ -1,0 +1,16 @@
+# win+E:资源管理器
+# win+R:运行框
+# win+D:显示桌面
+# win+L:锁定屏幕
+# win+V:打开剪贴板
+# win+S:打开搜索
+# win+I:打开设置
+# win+X:打开快速链接菜单
+# win+shift+S:截屏
+# alt+F4:关闭窗口
+# alt+Tab:切换窗口
+# win+H:语音输入
+# win+T:把焦点放任务栏
+# win+B:把焦点放任务栏右下角
+# win+shift+R:录屏
+# win+shift+T:截取文字
