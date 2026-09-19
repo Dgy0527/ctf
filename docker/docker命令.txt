@@ -34,3 +34,7 @@ docker rmi 镜像名
 docker system df
 docker rm -f dvwa
 dvwa账户:admin;密码:password
+
+docker-compose up -d
+docker-compose down
+docker rm -f 镜像名
