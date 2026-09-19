@@ -45,7 +45,7 @@ mysqli_close($GLOBALS["___mysqli_ston"]);
 
 
 
-# 页面代码
+# 页面源码
 ```
 <?php
 
