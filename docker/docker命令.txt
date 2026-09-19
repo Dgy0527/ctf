@@ -1,0 +1,21 @@
+sudo su/su root
+apt update
+apt install docker.io
+docker images
+docker ps -a
+sudo systemctl start docker
+systemctl start docker
+systemctl stop docker.socket
+systemctl stop docker.service
+systemctl restart docker
+docker pull 镜像名
+docker pull alpine
+mousepad /etc/passwd/daemon.json (     {
+				      "registry-mirrors":["https://
+				      这里替换.mirror.aliyuncs.com"]
+			          	 }                              ）
+docker run -dit --name=dvwa -p 10000:80 镜像名
+docker stop 镜像
+docker start 镜像
+docker exec -it 镜像 bash
+apt install
