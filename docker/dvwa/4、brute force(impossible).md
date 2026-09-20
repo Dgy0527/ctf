@@ -43,7 +43,7 @@ generateSessionToken();
 2、`$data = $db->prepare( 'SELECT first_name, last_name FROM users WHERE user_id = (:id) LIMIT 1;' );`:
 使用PDO的prepare()方法准备一条SQL语句;`$db`是PDO数据库连接对象;使用命名占位符`:id`,而不是直接拼接变量;`limit 1`:限制最多返回一行;这是第二层防护:预处理语句将sql逻辑与数据分离,防止注入
 
-POD prepare():预处理sql语句,把sql结构和用户输入数据分开,输入只被当成数据,不会被解析成sql代码,防止sql注入
+`POD prepare()`:预处理sql语句,把sql结构和用户输入数据分开,输入只被当成数据,不会被解析成sql代码,防止sql注入
 占位符:(1)命令占位符`:id`,可读性好;(2)问号占位符`?`
 
 3、`$data->bindParam( ':id', $id, PDO::PARAM_INT );`:指定参数类型为`PDO::PARAM_INT`(整数),确保`$id`被当作整数处理,即使输入包含恶意内容也会被强制转化为整数,进一步防止注入
