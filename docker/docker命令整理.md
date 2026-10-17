@@ -32,7 +32,7 @@
 # docker stop 容器名(或容器ID) :停止运行中的容器
 
 # docker restart 容器名 :重启容器
-# systemctl rstart docker
+# systemctl restart docker
 
 # docker kill 容器名 :强制停止容器
 
