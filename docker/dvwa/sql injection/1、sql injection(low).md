@@ -30,6 +30,8 @@ if( isset( $_REQUEST[ 'Submit' ] ) ) {
 
 # `$query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";`
 
+
+
 # 1、测试注入点
 ## `1'` :页面报错,说明存在字符型注入;用单引号闭合,需要用`--(空格)`或`--+`注释掉后面的代码
 # 2、判断字段数(列数)
