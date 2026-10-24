@@ -39,9 +39,10 @@
 # docker rm 容器名 :删除已停止的容器
 # docker rm -f 容器名
 
-# docker exec -it 容器名 :进入正在进行的容器
+# docker exec -it 容器名 /bin/bash(/bin/sh):进入正在进行的容器
 ## -it :开启交互式终端
 ## exec:在运行的容器里执行命令,退出容器后不会停止
+## /bin/bash(/bin/sh) :打开bash终端
 ## 退出容器:exit
 
 # docker logs 容器名 :查看容器日志
