@@ -1,4 +1,12 @@
-# `git branch`
+# `git branch` :管理分支
+
+## `git branch` :列出本地所有的分支
+## `git branch -a` :本地和远程(Github)所有的分支
+## `git branch 分支名` :创建分支;只创建分支,不会自动切换过去,依然停留在原来的分支上
+## `git switch 分支名` :切换分支
+## `git switch -c 分支名` :创建并立刻切换到新分支
+## `git branch -m 新分支名字` :重命名当前所在的分支
+
 
 ```
 Git Branch
