@@ -143,3 +143,13 @@ if __name__ == "__main__":
 # `{{7*7}}` :模板引擎(Template Engine)的语法格式;如果页面返回了49而不是原样输出`{{7*7}}`说明输入没有被过滤,被服务器当成代码执行
 ## 用于测试SSTI漏洞的探测Payload
 ## SSTI(Server-Side Template Injection) :服务端模板注入
+
+# sed(Stream Editor,流编辑器) :Linux文本处理器
+## `sed -n` 
+### -n(no auto-print) :安静模式;取消sed默认的打印输出
+## `sed -n '1p' 文件` :查看文件的某行
+### `sed -n '5p' file.txt`(查看文件的第5行)
+## `sed -n '1,2p' 文件` :查看文件的某几行 
+### `sed -n 2,5p file.txt`(查看文件的2到5行) 等同于 `head -n 5 file.txt | tail -n 4`
+## `sed -n '/error/p' 文件` :查看包含特定关键字的行(相当于带行号的grep)
+## `sed -n '/error/=' file.txt`或者`sed -n '/error/{=;p} file.txt'` :显示行号
