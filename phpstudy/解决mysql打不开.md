@@ -1,7 +1,7 @@
 # `netstat -ano | findstr :端口` :查PID
-## `netstat -ano | findstr :80`
+## `netstat -ano | findstr :3306`
 
-# `tasklist /FI "PID eq 端口"` :查看这个PID是哪个软件
+# `tasklist /FI "PID eq 那个PID"` :查看这个PID是哪个软件
 ## `tasklist /Fi "PID eq 80"`
 
 # `taskkill /F /IM 程序名` :杀掉进程
