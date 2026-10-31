@@ -1,3 +1,4 @@
+```
 # 1
 """MOCS Notes —— 一個「有洞」的筆記服務（教學用，故意不安全）
 
@@ -65,7 +66,6 @@ conn.close()
 
 
 # 3、
-## 8001
 @app.get("/health")
 def health():
 return "ok"
@@ -136,3 +136,10 @@ init()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, threaded=True)
+```
+
+
+
+# `{{7*7}}` :模板引擎(Template Engine)的语法格式;如果页面返回了49而不是原样输出`{{7*7}}`说明输入没有被过滤,被服务器当成代码执行
+## 用于测试SSTI漏洞的探测Payload
+## SSTI(Server-Side Template Injection) :服务端模板注入
