@@ -7,6 +7,6 @@
 # `docker compose logs -f` :实时查看所有容器的日志
 ## `docker compose logs --tail=20 target-a(服务)` :查看特定服务的最新20行日志
 # `docker compose restart` :重启所有容器
-# `docker compose up -d --build 自己的服务(docker-compose.yml里应该有写)` :在后台把项目重新打包并一键启动
+# `docker compose up -d --build 自己的服务(docker-compose.yml里应该有写)` :在后台把项目重新打包并一键启动(打补丁)
 ## -d(detach) :后台启动
 ## -build :强制重新构建镜像(打补丁)
