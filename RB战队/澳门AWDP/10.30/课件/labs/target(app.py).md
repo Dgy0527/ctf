@@ -199,3 +199,10 @@ if __name__ == "__main__":
 ### `sed -n 2,5p file.txt`(查看文件的2到5行) 等同于 `head -n 5 file.txt | tail -n 4`
 ## `sed -n '/error/p' 文件` :查看包含特定关键字的行(相当于带行号的grep)
 ## `sed -n '/error/=' file.txt`或者`sed -n '/error/{=;p} file.txt'` :显示行号
+
+# 补丁
+## 洞1: `/download`
+### (1)使用`realpath` 
+![alt text](../../../img/image-8.png)
+### (2)使用`abspath`
+![alt text](../../../img/image-9.png)
