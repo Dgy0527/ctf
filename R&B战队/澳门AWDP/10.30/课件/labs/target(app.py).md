@@ -202,7 +202,11 @@ if __name__ == "__main__":
 
 # 补丁
 ## 洞1: `/download`
-### (1)使用`realpath` 
+### (1)使用`realpath()` 
 ![alt text](../../../img/image-8.png)
-### (2)使用`abspath`
+### (2)使用`abspath()`
 ![alt text](../../../img/image-9.png)
+### (3)使用`basename()`
+![alt text](../../../img/image-10.png)
+### (4)使用Flask官方安全函数`secure_filename()`
+![alt text](../../../img/image-11.png)
