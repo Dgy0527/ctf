@@ -1,4 +1,4 @@
-# HEAD
+# HEAD :当前所在位置的指示器
 
 # `git switch --detach C1` :让git当前工作区(HEAD指针)切换到C1的特定提交(Commit)上
 ## --detach :分离
