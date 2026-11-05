@@ -1,4 +1,7 @@
-# SSTI
+# SSTI(Server-Side Template Injection) :服务端模板注入
+## jinjia
+## 工具 :SSTImap、Tplmap
+![alt text](../../../img/image-9.png)
 
 # {{cycler.__init__.__globals__.os.popen('').read( )}}
 ## {{cycler.__init__.__globals__.os.popen('ls').read( )}}
