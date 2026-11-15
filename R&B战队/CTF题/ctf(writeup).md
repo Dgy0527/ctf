@@ -28,3 +28,11 @@
 # 7、flowzip2
 ## wireshark
 ## 过滤http数据
+## 文件 -> 导出对象 -> http -> 全部保存
+## 用ARCHPR暴力破解压缩包密码
+
+# 8、Love
+## IDA32
+
+# 9、Server_logs
+## 检索
