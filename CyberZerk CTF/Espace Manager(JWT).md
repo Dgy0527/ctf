@@ -17,3 +17,12 @@
 ### __globals__ :拿到这个方法的全局变量空间
 ### .os :里面自带os模块
 ### popen("命令").read( ):执行命令,读取输出
+
+
+
+# 3、XXE(XML External Entity,XML外部实体注入)
+![alt text](../img/image-33.png)
+## burp的基本POST请求构造
+![alt text](../img/image-32.png)
+## GET请求构造
+![alt text](../img/image-34.png)
