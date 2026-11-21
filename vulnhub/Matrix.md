@@ -1,6 +1,8 @@
 # 1、信息收集
 ## (1)主机发现 :先在kali中扫描局域网,找到靶机IP 
 ## `arp-scan -l`(sudo)
+## 192.168.254.1(网关)
+## 192.168.254.145(MAC 前缀 `00:0c:29` = VMware 虚拟机)
 ### -l(localnet)
 ![alt text](../img/image-12.png)
 ## `netdiscover -r 192.168.1.0/24`(动态刷新)
