@@ -26,3 +26,19 @@
 ![alt text](../img/image-32.png)
 ## GET请求构造
 ![alt text](../img/image-34.png)
+
+
+
+# 4、JWT算法(混淆) RS256 -> HS256
+## RS256 :非对称签名;私钥签名、公钥验签
+## 后端没有固定校验算法,直接信任JWT头部alg字段;、
+## 攻击者修改头部alg:RS256 -> alg:HS256,后端就会把RSA公钥字符串当成HMAC的对称密钥来验签
+
+
+
+# 5、竟态条件(TOCTOU)
+## Time Of Check,Time Of Use
+
+
+
+# 6、隐写
